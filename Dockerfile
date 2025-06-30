@@ -8,14 +8,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
 
-# Instalar dependencias
-RUN npm ci --only=production
-
-# Instalar dependencias de desarrollo para el build
-RUN npm install typescript @types/node @types/express @types/cors @types/morgan ts-node
-
-# Instalar Prisma CLI globalmente
-RUN npm install -g prisma
+# Instalar todas las dependencias
+RUN npm ci
 
 # Copiar código fuente
 COPY . .
@@ -25,6 +19,9 @@ RUN npx prisma generate
 
 # Compilar TypeScript
 RUN npm run build
+
+# Limpiar dependencias de desarrollo
+RUN npm ci --only=production && npm cache clean --force
 
 # Exponer puerto
 EXPOSE 3000
