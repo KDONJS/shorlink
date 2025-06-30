@@ -1,13 +1,26 @@
 class ShorLinkApp {
     constructor() {
-        this.apiBase = 'http://localhost:3000';
+        this.apiBase = null; // Se cargará dinámicamente
         this.init();
     }
 
-    init() {
+    async init() {
+        await this.loadConfig();
         this.bindEvents();
         this.setupValidation();
         this.addAnimations();
+    }
+
+    async loadConfig() {
+        try {
+            const response = await fetch('/api/config');
+            const config = await response.json();
+            this.apiBase = config.baseUrl;
+        } catch (error) {
+            console.error('Error loading config:', error);
+            // Fallback al valor por defecto
+            this.apiBase = 'http://localhost:3000';
+        }
     }
 
     bindEvents() {

@@ -26,6 +26,13 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
+// Endpoint de configuración para el frontend
+app.get('/api/config', (req: express.Request, res: express.Response) => {
+  res.json({
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  });
+});
+
 // Rutas
 app.use('/api', shortLinkRoutes);
 
@@ -74,4 +81,24 @@ process.on('SIGINT', async () => {
   console.log('\n🛑 Shutting down server...');
   await prisma.$disconnect();
   process.exit(0);
+});
+
+// Ruta para servir index.html con configuración inyectada
+app.get('/', (req: express.Request, res: express.Response) => {
+  const fs = require('fs');
+  const path = require('path');
+  
+  let html = fs.readFileSync(path.join(__dirname, '../public/index.html'), 'utf8');
+  
+  // Inyectar configuración
+  const config = `
+    <script>
+      window.APP_CONFIG = {
+        baseUrl: '${process.env.BASE_URL || 'http://localhost:3000'}'
+      };
+    </script>
+  `;
+  
+  html = html.replace('</head>', config + '</head>');
+  res.send(html);
 });
