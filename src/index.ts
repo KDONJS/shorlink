@@ -4,8 +4,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
-import shortLinkRoutes from './routes/shortLinks';
-import { errorHandler } from './middleware/errorHandler';
+import shortLinkRoutes from './routes/shortLinks.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 // Cargar variables de entorno
 dotenv.config();

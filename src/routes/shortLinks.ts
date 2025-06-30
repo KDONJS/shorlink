@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { nanoid } from 'nanoid';
-import { prisma } from '../index';
-import { validateUrl } from '../utils/validators';
+import { prisma } from '../index.js';
+import { validateUrl } from '../utils/validators.js';
 
 const router = Router();
 
