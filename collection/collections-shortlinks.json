@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "Short Link API",
+    "description": "API para generar y gestionar short links",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear Short Link",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://www.google.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/shorten",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "shorten"]
+        }
+      }
+    },
+    {
+      "name": "Crear Short Link con Código Personalizado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://www.github.com\",\n  \"customCode\": \"github\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/shorten",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "shorten"]
+        }
+      }
+    },
+    {
+      "name": "Obtener Estadísticas",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/stats/{{shortCode}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "stats", "{{shortCode}}"]
+        }
+      }
+    },
+    {
+      "name": "Listar Short Links",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/links?page=1&limit=10",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "links"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Desactivar Short Link",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:3000/api/links/{{shortCode}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "links", "{{shortCode}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "shortCode",
+      "value": "abc123",
+      "type": "string"
+    }
+  ]
+}
