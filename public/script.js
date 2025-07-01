@@ -304,8 +304,24 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Inicializar la aplicación
+// Add event listeners when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new ShorLinkApp();
+    
+    // Privacy modal event listeners
+    const privacyLink = document.getElementById('privacyLink');
+    const closeModal = document.getElementById('closeModal');
+    
+    if (privacyLink) {
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openPrivacyModal();
+        });
+    }
+    
+    if (closeModal) {
+        closeModal.addEventListener('click', closePrivacyModal);
+    }
 });
 
 // Service Worker para PWA
@@ -320,3 +336,30 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+
+// Modal functions
+function openPrivacyModal() {
+    document.getElementById('privacyModal').style.display = 'block';
+}
+
+function closePrivacyModal() {
+    document.getElementById('privacyModal').style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('privacyModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// AdSense initialization
+if (typeof adsbygoogle !== 'undefined') {
+    (adsbygoogle = window.adsbygoogle || []).push({});
+}
+
+// Make functions globally available
+window.openPrivacyModal = openPrivacyModal;
+window.closePrivacyModal = closePrivacyModal;

@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShorLink - Acortador de Enlaces</title>
+    <title>LSSL - Acortador de Enlaces</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Humans.txt -->
+    <link type="text/plain" rel="author" href="/humans.txt" />
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <div class="logo">
-                <h1>ShorLink</h1>
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/" class="logo-link">
+                        <img src="img/logo.svg" alt="LSSL" class="logo-image">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="nav-link active">Inicio</a>
+                    <a href="#" class="nav-link">
+                        API <span class="coming-soon-flag">Próximamente</span>
+                    </a>
+                </nav>
             </div>
-            <nav class="nav">
-                <a href="#" class="nav-link">Inicio</a>
-                <a href="#" class="nav-link">API</a>
-            </nav>
         </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Acorta tus enlaces de forma <span class="highlight">inteligente</span></h2>
+                <p class="hero-subtitle">Transforma URLs largas en enlaces cortos y elegantes. Rápido, seguro y confiable.</p>
+            </div>
+        </section>
 
         <!-- Ad Space Top -->
         <div class="ad-space ad-top">
@@ -37,37 +54,136 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="url-shortener">
-                <div class="input-section">
-                    <div class="input-group">
-                        <input type="url" id="urlInput" placeholder="Pega tu enlace aquí..." required>
-                        <button id="shortenBtn" class="btn-primary">
-                            <span class="btn-text">Acortar</span>
-                            <div class="loading-spinner" style="display: none;"></div>
+                <div class="shortener-card">
+                    <div class="input-section">
+                        <div class="input-group">
+                            <div class="input-wrapper">
+                                <input type="url" id="urlInput" placeholder="Pega tu enlace aquí..." required>
+                                <div class="input-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <button id="shortenBtn" class="btn-primary">
+                                <span class="btn-text">Acortar</span>
+                                <div class="loading-spinner" style="display: none;"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="advanced-options" style="display: none;">
+                            <div class="custom-input-wrapper">
+                                <input type="text" id="customCode" placeholder="Código personalizado (opcional)">
+                                <div class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button id="toggleAdvanced" class="btn-secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Opciones avanzadas</span>
                         </button>
                     </div>
-                    
-                    <div class="advanced-options" style="display: none;">
-                        <input type="text" id="customCode" placeholder="Código personalizado (opcional)">
+
+                    <div class="result-section" id="resultSection" style="display: none;">
+                        <div class="result-card">
+                            <div class="result-header">
+                                <div class="success-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <polyline points="22,4 12,14.01 9,11.01" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3>¡Enlace acortado exitosamente!</h3>
+                            </div>
+                            <div class="short-url-container">
+                                <div class="url-display">
+                                    <input type="text" id="shortUrl" readonly>
+                                    <div class="url-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <button id="copyBtn" class="btn-copy">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    <span>Copiar</span>
+                                </button>
+                            </div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span id="clickCount">0 clicks</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                                            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </span>
+                                    <span id="createdDate"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <button id="toggleAdvanced" class="btn-secondary">Opciones avanzadas</button>
+
+                    <div class="error-message" id="errorMessage" style="display: none;"></div>
                 </div>
 
-                <div class="result-section" id="resultSection" style="display: none;">
-                    <div class="result-card">
-                        <h3>¡Enlace acortado!</h3>
-                        <div class="short-url-container">
-                            <input type="text" id="shortUrl" readonly>
-                            <button id="copyBtn" class="btn-copy">Copiar</button>
+                <!-- Features Section -->
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </div>
-                        <div class="stats">
-                            <span id="clickCount">0 clicks</span>
-                            <span id="createdDate"></span>
+                        <h4>Súper Rápido</h4>
+                        <p>Acorta enlaces en segundos</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
                         </div>
+                        <h4>Seguro</h4>
+                        <p>Protección y privacidad garantizada</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2"/>
+                                <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2"/>
+                                <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h4>Estadísticas</h4>
+                        <p>Monitorea el rendimiento</p>
                     </div>
                 </div>
-
-                <div class="error-message" id="errorMessage" style="display: none;"></div>
             </div>
         </main>
 
@@ -84,14 +200,121 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <p>&copy; 2024 ShorLink - Powered by <a href="https://lucqa.com/" target="_blank" class="lucqa-link">Lucqa.com</a></p>
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <h3>LSSL</h3>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link" id="privacyLink">Privacidad</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 LSSL - Powered by <a href="https://lucqa.com/" target="_blank" class="lucqa-link">Lucqa.com</a></p>
+                </div>
             </div>
         </footer>
     </div>
 
+    <!-- Privacy Modal -->
+    <div id="privacyModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Políticas de Privacidad</h2>
+                <span class="close" onclick="closePrivacyModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="last-updated">Última actualización: Junio 2025</p>
+
+                <section class="privacy-section">
+                    <h3>1. Información que Recopilamos</h3>
+                    <p>En LSSL (Lucqa System Short Links), recopilamos la siguiente información:</p>
+                    <ul>
+                        <li><strong>URLs originales:</strong> Los enlaces que decides acortar a través de nuestro servicio</li>
+                        <li><strong>Códigos personalizados:</strong> Si eliges crear un código personalizado para tu enlace</li>
+                        <li><strong>Estadísticas de uso:</strong> Número de clicks y fechas de acceso</li>
+                        <li><strong>Datos hasheados:</strong> Todos los recursos y datos capturados son procesados mediante algoritmos de hash para garantizar la privacidad y seguridad</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>2. Cómo Utilizamos tu Información</h3>
+                    <p>Utilizamos la información recopilada para:</p>
+                    <ul>
+                        <li>Proporcionar el servicio de acortamiento de enlaces</li>
+                        <li>Generar estadísticas de uso para los usuarios</li>
+                        <li>Mejorar la funcionalidad y seguridad de nuestro servicio</li>
+                        <li>Prevenir el uso malicioso o fraudulento de la plataforma</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>3. Seguridad y Privacidad de los Datos</h3>
+                    <p>Implementamos las siguientes medidas de seguridad:</p>
+                    <ul>
+                        <li><strong>Hasheo de datos:</strong> Todos los recursos capturados son procesados mediante algoritmos de hash seguros</li>
+                        <li><strong>No almacenamiento de datos personales:</strong> No registramos direcciones IP, información del navegador o datos identificables</li>
+                        <li><strong>Protección contra acceso no autorizado:</strong> Medidas de seguridad apropiadas para proteger la información</li>
+                        <li><strong>Anonimización:</strong> Cualquier dato técnico recopilado es completamente anónimo</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>4. Compartir Información</h3>
+                    <p>No vendemos, intercambiamos ni transferimos tu información personal a terceros, excepto:</p>
+                    <ul>
+                        <li>Cuando sea requerido por ley</li>
+                        <li>Para proteger nuestros derechos, propiedad o seguridad</li>
+                        <li>Con proveedores de servicios que nos ayudan a operar nuestro sitio web</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>5. Cookies y Tecnologías Similares</h3>
+                    <p>Utilizamos cookies mínimas para:</p>
+                    <ul>
+                        <li>Funcionalidad básica del servicio</li>
+                        <li>Recordar preferencias de usuario</li>
+                    </ul>
+                    <p>Puedes desactivar las cookies en tu navegador, aunque esto puede afectar la funcionalidad del sitio.</p>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>6. Retención de Datos</h3>
+                    <p>Conservamos únicamente los datos necesarios para proporcionar nuestros servicios. Los enlaces y estadísticas se mantienen mientras sean activos y útiles para el usuario.</p>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>7. Tus Derechos</h3>
+                    <p>Tienes derecho a:</p>
+                    <ul>
+                        <li>Solicitar información sobre los datos que tenemos</li>
+                        <li>Solicitar la eliminación de tus enlaces</li>
+                        <li>Oponerte al procesamiento de información</li>
+                    </ul>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>8. Enlaces Externos</h3>
+                    <p>Nuestro servicio redirige a sitios web externos. No somos responsables de las prácticas de privacidad de estos sitios de destino.</p>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>9. Cambios a esta Política</h3>
+                    <p>Podemos actualizar esta política de privacidad ocasionalmente. Te notificaremos sobre cambios significativos publicando la nueva política en esta página.</p>
+                </section>
+
+                <section class="privacy-section">
+                    <h3>10. Contacto</h3>
+                    <p>Si tienes preguntas sobre esta política de privacidad, puedes contactarnos a través de:</p>
+                    <ul>
+                        <li>Email: privacy@lucqa.com</li>
+                        <li>Sitio web: <a href="https://lucqa.com" target="_blank">https://lucqa.com</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 </body>
 </html>

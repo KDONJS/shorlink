@@ -1,0 +1,13 @@
+/* TEAM */
+
+Developer: Yorlin Quispe Ygnacio
+Contact: yorlin.quispe@lucqa.com [at] lucqa.com
+Twitter: @yorlin.quispe
+From: Lima, Perú
+
+/* THANKS */
+
+Node.js community
+TypeScript team
+Prisma team
+All open source contributors
